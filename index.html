@@ -7,7 +7,6 @@
   <!-- Load model-viewer library -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
   <style>
-    /* Basic style to center the model viewer */
     body, html {
       margin: 0;
       padding: 0;
@@ -17,13 +16,17 @@
       align-items: center;
       background-color: #f0f0f0;
     }
-    /* Model viewer container style */
     model-viewer {
       width: 100%;
-      max-width: 600px; /* Adjust size */
-      height: 500px;    /* Adjust height */
+      max-width: 600px;
+      height: 500px;
       object-fit: contain;
-      touch-action: none; /* Allow better touch interaction */
+      touch-action: none;
+    }
+    p {
+      color: red;
+      font-weight: bold;
+      text-align: center;
     }
   </style>
 </head>
@@ -31,17 +34,19 @@
 
   <!-- Model Viewer Component -->
   <model-viewer 
-    ar                  <!-- Enable AR -->
-    alt="Leo Model"     <!-- Alt text for accessibility -->
-    src="leo.glb"       <!-- 3D model for Android/WebXR -->
-    ios-src="leo_texture.usdz"  <!-- iOS USDZ model -->
-    background-color="#70BCD1"  <!-- Background color -->
-    shadow-intensity="0.7"      <!-- Shadows in the scene -->
-    camera-controls             <!-- Enable drag, rotate, and zoom -->
-    auto-rotate                 <!-- Model rotates automatically -->
-    scale="0.05 0.05 0.05"      <!-- Adjust model size -->
-    ar-modes="scene-viewer webxr quick-look"  <!-- AR Modes supported -->
-    magic-leap>                 <!-- Optional support for Magic Leap -->
+    ar
+    alt="Leo Model"
+    src="./leo.glb"                  <!-- Ensure this path is correct -->
+    ios-src="./leo_texture.usdz"     <!-- Ensure this path is correct -->
+    background-color="#70BCD1"
+    shadow-intensity="0.7"
+    camera-controls
+    auto-rotate
+    scale="0.05 0.05 0.05"
+    ar-modes="scene-viewer webxr quick-look"
+    magic-leap>
+    <!-- Error message for fallback -->
+    <p>Sorry, the 3D model failed to load or AR is not supported on your device.</p>
   </model-viewer>
 
 </body>
