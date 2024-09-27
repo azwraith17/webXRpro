@@ -1,53 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Model Viewer WebAR</title>
-  <!-- Load model-viewer library -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f0f0f0;
-    }
-    model-viewer {
-      width: 100%;
-      max-width: 600px;
-      height: 500px;
-      object-fit: contain;
-      touch-action: none;
-    }
-    p {
-      color: red;
-      font-weight: bold;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Model Viewer Component -->
-  <model-viewer 
+  <head>
+    <meta charset="utf-8">
+    <title>ModerlViewerを使ったWebARページ</title>
+  </head>
+  <body>
+  <script type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+    
+  </script>
+    
+    <model-viewer  
+<model-viewer  
     ar
     alt="Leo Model"
-    src="./leo.glb"                  <!-- Ensure this path is correct -->
-    ios-src="./leo_texture.usdz"     <!-- Ensure this path is correct -->
+    src="leo.glb" 
+    ios-src="leo_texture.usdz" 
+    style="width:800px;height:1000px;"                  
     background-color="#70BCD1"
     shadow-intensity="0.7"
     camera-controls
-    auto-rotate
-    scale="0.05 0.05 0.05"
-    ar-modes="scene-viewer webxr quick-look"
+    interaction-prompt="auto"
+    auto-rotate 
+    scale="0.1 0.1 0.1" <!-- Modelin boyutunu küçültmek için eklendi -->
+    ar-modes="scene-viewer webxr quick-look" 
     magic-leap>
-    <!-- Error message for fallback -->
-    <p>Sorry, the 3D model failed to load or AR is not supported on your device.</p>
-  </model-viewer>
-
-</body>
-</html>
+</model-viewer>
