@@ -7,10 +7,22 @@
     <!-- Load model-viewer script -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
     <style>
-      /* Allow drag and move for the model */
+      /* Model viewer styling */
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
       model-viewer {
+        width: 100%;
+        max-width: 600px; /* Controls the size on large screens */
+        height: 100vh; /* Full viewport height */
+        object-fit: contain; /* Ensures it stays within bounds */
         touch-action: pan-y;
-        /* Ensures smooth dragging */
       }
     </style>
   </head>
@@ -22,13 +34,12 @@
       alt="Leo Model"
       src="leo.glb" 
       ios-src="leo_texture.usdz" 
-      style="width:800px; height:1000px;"                  
       background-color="#70BCD1"
       shadow-intensity="0.7"
-      camera-controls  <!-- Enables drag, pan, and rotate -->
+      camera-controls
       interaction-prompt="auto"
       auto-rotate 
-      scale="0.1 0.1 0.1" 
+      scale="0.05 0.05 0.05" <!-- Adjust scale to fit your model -->
       ar-modes="scene-viewer webxr quick-look"
       magic-leap>
     </model-viewer>
