@@ -7,7 +7,7 @@
     <!-- Load model-viewer script -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
     <style>
-      /* Model viewer styling */
+      /* Style for centering and containing the model */
       body, html {
         margin: 0;
         padding: 0;
@@ -16,13 +16,11 @@
         justify-content: center;
         align-items: center;
       }
-
       model-viewer {
         width: 100%;
-        max-width: 600px; /* Controls the size on large screens */
-        height: 100vh; /* Full viewport height */
-        object-fit: contain; /* Ensures it stays within bounds */
-        touch-action: pan-y;
+        max-width: 400px; /* Adjust size for better display */
+        height: 500px;    /* Adjust height */
+        object-fit: contain;
       }
     </style>
   </head>
@@ -39,10 +37,10 @@
       camera-controls
       interaction-prompt="auto"
       auto-rotate 
-      scale="0.05 0.05 0.05" <!-- Adjust scale to fit your model -->
-      ar-modes="scene-viewer webxr quick-look"
+      scale="0.01 0.01 0.01"  <!-- Reduce model scale -->
+      ar-modes="scene-viewer webxr quick-look"  <!-- AR Modes -->
       magic-leap>
     </model-viewer>
-    
+
   </body>
 </html>
