@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Model Viewer WebAR</title>
-    <!-- Load model-viewer script -->
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
-    <style>
-      /* Style for centering and containing the model */
-      body, html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      model-viewer {
-        width: 100%;
-        max-width: 400px; /* Adjust size for better display */
-        height: 500px;    /* Adjust height */
-        object-fit: contain;
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Viewer WebAR</title>
+  <!-- Load model-viewer library -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+  <style>
+    /* Basic style to center the model viewer */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+    /* Model viewer container style */
+    model-viewer {
+      width: 100%;
+      max-width: 600px; /* Adjust size */
+      height: 500px;    /* Adjust height */
+      object-fit: contain;
+      touch-action: none; /* Allow better touch interaction */
+    }
+  </style>
+</head>
+<body>
 
-    <!-- Model Viewer Component -->
-    <model-viewer 
-      ar
-      alt="Leo Model"
-      src="leo.glb" 
-      ios-src="leo_texture.usdz" 
-      background-color="#70BCD1"
-      shadow-intensity="0.7"
-      camera-controls
-      interaction-prompt="auto"
-      auto-rotate 
-      scale="0.01 0.01 0.01"  <!-- Reduce model scale -->
-      ar-modes="scene-viewer webxr quick-look"  <!-- AR Modes -->
-      magic-leap>
-    </model-viewer>
+  <!-- Model Viewer Component -->
+  <model-viewer 
+    ar                  <!-- Enable AR -->
+    alt="Leo Model"     <!-- Alt text for accessibility -->
+    src="leo.glb"       <!-- 3D model for Android/WebXR -->
+    ios-src="leo_texture.usdz"  <!-- iOS USDZ model -->
+    background-color="#70BCD1"  <!-- Background color -->
+    shadow-intensity="0.7"      <!-- Shadows in the scene -->
+    camera-controls             <!-- Enable drag, rotate, and zoom -->
+    auto-rotate                 <!-- Model rotates automatically -->
+    scale="0.05 0.05 0.05"      <!-- Adjust model size -->
+    ar-modes="scene-viewer webxr quick-look"  <!-- AR Modes supported -->
+    magic-leap>                 <!-- Optional support for Magic Leap -->
+  </model-viewer>
 
-  </body>
+</body>
 </html>
