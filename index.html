@@ -1,28 +1,32 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>ModerlViewerを使ったWebARページ</title>
+    <title>Meet Leo the skeleton</title>
   </head>
   <body>
+    <script type="module"
+	    src="./model-viewer.js">
+    </script>
+
+    <model-viewer
+      ar
+      alt="Leo Model"
+      src="./leo.glb"
+      ios-src="./leo_texture.usdz"
+      style="width:800px;height:1000px;"
+      background-color="#70BCD1"
+      shadow-intensity="0.7"
+      camera-controls
+      touch-action="pan-y"
+      interaction-prompt="auto"
+      auto-rotate
+      scale="0.1 0.1 0.1"
+      ar-modes="scene-viewer webxr quick-look"
+      magic-leap>
+    </model-viewer>
+  </body>
   <script type="module"
-      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
-    
+	  src="model-viewer.js">
   </script>
-    
-    <model-viewer  
-<model-viewer  
-    ar
-    alt="Leo Model"
-    src="leo.glb" 
-    ios-src="leo_texture.usdz" 
-    style="width:800px;height:1000px;"                  
-    background-color="#70BCD1"
-    shadow-intensity="0.7"
-    camera-controls
-    interaction-prompt="auto"
-    auto-rotate 
-    scale="0.1 0.1 0.1" <!-- Modelin boyutunu küçültmek için eklendi -->
-    ar-modes="scene-viewer webxr quick-look" 
-    magic-leap>
-</model-viewer>
+</html>
