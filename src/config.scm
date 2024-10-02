@@ -9,6 +9,8 @@
 (define default-model (make-parameter `("heart.glb" "Heart")))
 (define static-gen (make-parameter #f))
 (define all-pages
-  (make-parameter `(("skull.glb" "Skull")
+  (make-parameter `(("skeletonsystem.glb" "Skeleton")
+		    ("lungs.glb" "Lung")
+		    ("skull.glb" "Skull")
 		    ("heart.glb" "Heart")
 		    ("cube.glb" "Cube"))))
