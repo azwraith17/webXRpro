@@ -1,0 +1,38 @@
+(define-module (model-viewer-page)
+  #:use-module (config)
+  #:use-module (ice-9 match))
+
+(define (model-viewer)
+  (match-let ([(path name) (default-model)])
+    `((model-viewer (@ (ar)
+		       (alt "Leo Model")
+		       (src ,path)
+		       ;; (ios-src "./leo_texture.usdz")
+		       (style "width:720;height:480;")
+		       (shadow-intensity "1")
+		       (camera-controls)
+		       (touch-action "pan-y")
+		       (interaction-prompt "auto")
+		       (auto-rotate)
+		       (scale "1 1 1")
+		       (ar-modes "webxr scene-viewer quick-look")
+		       (magic-leap))
+		    "")
+      (script (@ (type "module")
+		 (src "./model-viewer.js"))
+	      ""))))
+
+(define (header)
+  `(head
+    (link (@ (rel "stylesheet") (href "style.css")))
+    (meta (@ (charset "utf-8")))
+    (meta (@ (name "view-port")
+	     (content"width=device-width, initial-scale=1.0")))
+    (title ,(title))))
+
+(define-public (gen-model-viewer)
+  `(html
+    ,(header)
+    (body
+     (div (@ (class "model-container"))
+	  ,(model-viewer)))))
