@@ -2,6 +2,7 @@
 # -*- mode: scheme; coding: utf-8 -*-
 exec guile -L ./src -e main -s "$0" "$@"
 !#
+
 (use-modules (ice-9 match)
 	     (ice-9 popen)
 	     (ice-9 textual-ports)
