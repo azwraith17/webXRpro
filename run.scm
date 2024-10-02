@@ -1,6 +1,6 @@
 #! /bin/sh
 # -*- mode: scheme; coding: utf-8 -*-
-exec guile -L ./webXRpro/src -e main -s "$0" "$@"
+exec guile -L ./src -e main -s "$0" "$@"
 !#
 
 (use-modules (ice-9 match)

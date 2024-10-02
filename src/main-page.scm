@@ -1,27 +1,35 @@
 (define-module (main-page)
-  #:use-module ((srfi srfi-1) #:select (fold unfold))
-  #:use-module (ice-9 match))
+  #:use-module (ice-9 match)
+  #:use-module (config)
+  #:use-module ((srfi srfi-1) #:select (fold unfold)))
 
-(define button-assoc
-  ;;name    model-file   mapping
-  '(("Skull\n" "leo.glb"     "/leo")
-    ("Heart\n" "heart.glb"   "/heart")))
+(define (model->qurl m)
+  (format #f "~a?model=~a" (model-viewer) m))
+(define (model->path m)
+  (format #f "./~a.html" (cadr (assoc m (all-pages)))))
 
-(define (gen-buttons l)
+(define (link name ref)
+  `(a (@ (class "model-btn") (href ,ref)) ,name))
+
+
+(define (gen-buttons)
   (map (match-lambda
-	 [(name model mapping)
-	  `(div (a (@ (id   ,name)
-		      (href ,mapping))
-		   ,name)
-		(br))])
-       l))
+	 [(model name)
+	  (link name ((if (static-gen) model->path model->qurl)
+		      model))])
+       (all-pages)))
 
-(define-public (main-page)
+(define (header)
+  `(head
+    (link (@ (rel "stylesheet") (href "style.css")))
+    (meta (@ (charset "utf-8")))
+    (meta (@ (name "view-port")
+	     (content"width=device-width, initial-scale=1.0")))
+    (title ,(title))))
+
+(define-public (gen-main-page)
   `(html (@ (lang "en"))
-	 (head
-	  (link (@ (rel "stylesheet") (href "style.css")))
-	  (meta (@ (charset "utf-8")))
-	  (title "Welcome to Vritual lab"))
+	 ,(header)
 	 (body
 	  (div (@ (id "nav-box"))
-	       ,@(gen-buttons button-assoc)))))
+	       ,@(gen-buttons)))))
